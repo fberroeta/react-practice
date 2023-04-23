@@ -1,22 +1,38 @@
 import oliAvatar from './assets/avatarwoli.jpeg'
 import './App.css'
+import TwitterFollowCard from './TwitterFollowCard'
+
+const avatarService = (nickname) => `https://unavatar.io/${nickname}`
+const users = [
+  {
+  id:1,
+  name: 'Olivia Berroeta Chandía',
+  avatar: oliAvatar,
+  isFollowing: false,
+  nickname:'oliuwu'
+},
+{
+  id:2,
+  name:'Homero Simpson',
+  avatar:avatarService('homer-simpson'),
+  isFollowing:true,
+  nickname:'homerosimpson'
+},
+{
+  id:3,
+  name:'Eric Cartman',
+  avatar:avatarService('ericcartman'),
+  isFollowing:true,
+  nickname:'thecoon'
+}
+]
 
 function App() {
   return (
-    <article className='tw-followCard'>
-      <header className='tw-followCard-header'>
-        <img className="tw-followCard-avatar" src={oliAvatar} alt="" />
-      <div className='tw-followCard-info'>
-        <strong>Olivia Berroeta Chandía</strong>
-        <span className='tw-followCard-infoUserName'>@oliuwu</span>
-      </div>
-      </header>
-      <aside>
-        <button className='tw-followCard-button'>
-          Seguir
-        </button>
-      </aside>
-    </article>
+    <section className='App'>
+    {users.map(({id,name,avatar,isFollowing, nickname})=><TwitterFollowCard key={id} name={name} avatar={avatar} initialIsFollowing={isFollowing} nickname={nickname}/>)}
+    </section>
+  
     )
 }
 
