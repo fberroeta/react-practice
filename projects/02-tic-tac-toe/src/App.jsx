@@ -5,9 +5,13 @@ import Square from './components/Square'
 function App() {
 //Board data array
 const [board, setBoard] = useState(new Array(9).fill(null))
+const [turn,setTurn] = useState('X')
 
 const onBoardChange = (index) =>{
-  console.log('changed ' + index)
+  const newArray = [...board]  
+  newArray[index] = turn
+  setBoard(newArray)
+  setTurn(turn==='X'?'O':'X')
 }
 
   return (
