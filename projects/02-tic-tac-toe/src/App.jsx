@@ -1,12 +1,16 @@
-
 import './App.css'
+import Square from './components/Square'
 
 function App() {
+//Board data array
+const boardData = new Array(9).fill(null)
 
   return (
-    <>
-     <h1>TicTacToe</h1>
-    </>
+    <section className='board'>
+     {boardData.map((square,index)=><Square key={index}>
+      {square}
+     </Square>)}
+    </section>
   )
 }
 
