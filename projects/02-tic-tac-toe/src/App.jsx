@@ -1,15 +1,20 @@
+import {useState} from 'react'
 import './App.css'
 import Square from './components/Square'
 
 function App() {
 //Board data array
-const boardData = new Array(9).fill(null)
+const [board, setBoard] = useState(new Array(9).fill(null))
+
+const onBoardChange = (index) =>{
+  console.log('changed ' + index)
+}
 
   return (
     <section className='board'>
-     {boardData.map((square,index)=><Square key={index}>
-      {square}
-     </Square>)}
+     {
+     board.map((square,index)=><Square onChange={onBoardChange} key={index} index={index}>{square}</Square>)
+     }
     </section>
   )
 }
