@@ -42,7 +42,8 @@ function App() {
       setWinner(winner)
       
       console.log('el ganador es ' + winner);
-    }
+    }else if(newBoard.every(value=>value!=null))
+    {setWinner('draw')}
     setTurn(turn === 'X' ? 'O' : 'X');
   };
 
@@ -50,11 +51,14 @@ function App() {
     setBoard(initialBoard)
     setWinner(false)
   }
+
+  const dialogMessage = winner=='draw'?'Draw':'The winner is ' + winner
+  
   return (
     <>
     <dialog open={winner??false}>
       <p>
-        The winner is {winner}
+        {dialogMessage}
         </p>
         <button onClick={dialogHandler}>Play Again!</button>
     </dialog>
