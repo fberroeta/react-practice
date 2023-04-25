@@ -14,7 +14,12 @@
   grid-template-columns: repeat(3, 1fr);
 }
 .board-square {
-  padding: 2rem;
+  min-width: 100px;
+  min-height: 100px;
+  /* padding: 2rem; */
   background-color: #fff;
   border: solid black 1px;
+}
+.board-square span {
+  line-height: 100px;
 }
