@@ -1,7 +1,7 @@
-const Square = ({index,onChange,children}) => {
+const Square = ({index,onChange,children, winner}) => {
   
   const handleClick = ()=> {
-    onChange(index)
+    winner??onChange(index)
   }
   
   return (

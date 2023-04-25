@@ -1,7 +1,6 @@
-const Dialog = ({winner, setBoard,setWinner, initialBoard}) => {
+const Dialog = ({winner,resetGame}) => {
     const dialogHandler = () =>{
-        setBoard(initialBoard)
-        setWinner(false)
+        resetGame();
       }
 
     const dialogMessage = winner=='draw'?'Draw':'The winner is ' + winner
