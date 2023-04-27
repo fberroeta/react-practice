@@ -1,11 +1,9 @@
 APIs:
-Chuck Norris Facts Random: https://catfact.ninja/fact
-
-Imagen random: https://source.unsplash.com/random/?fruit
-Imagen random: https://source.unsplash.com/random/?When a problem comes along, Chuck Norris whips it. He whips it good.
+Cat Random Fact API: https://catfact.ninja/fact
+endpoint: /
+Cat Random Image API: https://cataas.com
+endpoint: /cat/says/:text
 
 Recupera un hecho aleatorio de gatos de la primera API
-
-Recuperar la primera palabra del hecho
-
+Recuperar las 3 primeras palabras del hecho
 Muestra una imagen de un gato con la primera palabra.
