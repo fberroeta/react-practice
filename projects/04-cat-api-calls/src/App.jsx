@@ -6,10 +6,14 @@ const CAT_IMAGE_API_URL = 'https://cataas.com'
 const App = () => {
   const [fact, setFact] = useState()
   const [image, setImage] = useState()
+  const [error, setError] = useState()
 
   useEffect(() => {
     fetch(CAT_FACT_API_URL)
-      .then(res => res.json())
+      .then(res =>
+        res.json()
+
+      )
       .then(data => {
         const { fact } = data
         setFact(fact)
@@ -22,20 +26,29 @@ const App = () => {
     const threeFirstWords = fact.split(' ', 3).join(' ')
     const endpointImageApi = `${CAT_IMAGE_API_URL}/cat/says/${threeFirstWords}?json=true`
 
-    fetch(endpointImageApi)
-      .then(res => res.json())
+    fetch(endpointImageApi, { mode: 'no-cors' })
+      .then(res => {
+        console.log(res)
+        if (!res.ok) {
+          setError(res.status)
+          return Promise.reject(new Error('error en respuesta', res.status))
+        }
+        res.json()
+      }
+      )
       .then(data => {
         const { url } = data
         setImage(url)
       })
-  }, [fact])
+      .catch(error => console.log(error))
+  }, [fact, error])
 
   return (
     <main>
       <h1 style={{ fontFamily: 'cursive' }}>Cat Image App</h1>
 
-      {fact && <p>{fact}</p>}
-      {image && <img src={`${CAT_IMAGE_API_URL}${image}`} alt={`Image of a cat using the three words of the cat fact: ${fact}`} />}
+      {fact && !error && <p>{fact}</p>}
+      {image && !error && <img src={`${CAT_IMAGE_API_URL}${image}`} alt={`Image of a cat using the three words of the cat fact: ${fact}`} />}
 
     </main>
   )
