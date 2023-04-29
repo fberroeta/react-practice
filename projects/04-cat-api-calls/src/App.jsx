@@ -30,7 +30,7 @@ const App = () => {
       .then(res => {
         console.log(res)
         if (!res.ok) {
-          setError(res.status)
+          setError('API request error')
           return Promise.reject(new Error('error en respuesta', res.status))
         }
         res.json()
@@ -46,9 +46,9 @@ const App = () => {
   return (
     <main>
       <h1 style={{ fontFamily: 'cursive' }}>Cat Image App</h1>
-
-      {fact && !error && <p>{fact}</p>}
-      {image && !error && <img src={`${CAT_IMAGE_API_URL}${image}`} alt={`Image of a cat using the three words of the cat fact: ${fact}`} />}
+      <p>{error}</p>
+      {!error && fact && <p>{fact}</p>}
+      {!error && image && <img src={`${CAT_IMAGE_API_URL}${image}`} alt={`Image of a cat using the three words of the cat fact: ${fact}`} />}
 
     </main>
   )
