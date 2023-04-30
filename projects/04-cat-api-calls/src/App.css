@@ -8,16 +8,16 @@ main {
   gap: 1rem;
 }
 
-section {
+main {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
   align-items: center;
 }
-section p {
+main p {
   font-weight: 600;
 }
-section img {
+main img {
   max-width: 320px;
   height: auto;
 }

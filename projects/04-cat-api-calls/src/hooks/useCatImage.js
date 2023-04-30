@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+const CAT_IMAGE_DEFAULT_URL = '/src/assets/cat.webp'
+const CAT_IMAGE_API_URL = 'https://cataas.com'
 
 export const useCatImage = ({ fact }) => {
   const [image, setImage] = useState()
@@ -10,7 +12,9 @@ export const useCatImage = ({ fact }) => {
 
     fetch(endpointImageApi, { mode: 'no-cors' })
       .then(res => {
-        if (!res.ok) { throw new Error('Error fetching data') }
+        if (!res.ok) {
+          throw new Error('Error fetching data')
+        }
         return res.json()
       }
       )
@@ -18,8 +22,8 @@ export const useCatImage = ({ fact }) => {
         const { url } = data
         setImage(url)
       })
-      .catch(error => console.error(error))
+      .catch(error => (error))
   }, [fact])
-
-  return { image }
+  if (!image) { return { imgUrl: CAT_IMAGE_DEFAULT_URL } }
+  return { imgUrl: `${CAT_IMAGE_API_URL}/${image}` }
 }
